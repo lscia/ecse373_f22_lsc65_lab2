@@ -127,18 +127,16 @@ rpy="-0.0012068 0.114646 -0.0015308" />
 <xacro:macro name="side_wheels" params="side reflect">
 
 	<link name="wheel_${side}">
-	<visual>
-	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-	<geometry>
-	<cylinder radius="0.2" length="0.05"/>
-	</geometry>
-	</visual>
-	<collision>
-	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-	<geometry>
-	<cylinder radius="0.2" length="0.05"/>
-	</geometry>
-	</collision>
+		<visual>
+			<geometry>
+				<cylinder radius="0.2" length="0.05"/>
+			</geometry>
+		</visual>
+		<collision>
+			<geometry>
+				<cylinder radius="0.2" length="0.05"/>
+			</geometry>
+		</collision>
 	</link>
 
 	<joint name="base_wheel_${side}_joint" type="continuous">
@@ -156,34 +154,27 @@ rpy="-0.0012068 0.114646 -0.0015308" />
 <xacro:side_wheels side="left" reflect="1" />
 <xacro:side_wheels side="right" reflect="-1" />
 
-<xacro:macro name="center">
-
-	<link name="wheel_center">
+<link name="wheel_center">
 	<visual>
-	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-	<geometry>
-	<cylinder radius="0.15" length="0.05"/>
-	</geometry>
+		<geometry>
+			<cylinder radius="0.15" length="0.05"/>
+		</geometry>
 	</visual>
 	<collision>
-	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-	<geometry>
-	<cylinder radius="0.15" length="0.05"/>
-	</geometry>
+		<geometry>
+			<cylinder radius="0.15" length="0.05"/>
+		</geometry>
 	</collision>
-	</link>
+</link>
 
 
-	<joint name="base_wheel_center_joint" type="continuous">
+<joint name="base_wheel_center_joint" type="continuous">
 	<parent link="base" />
 	<child link="wheel_center" />
-	<origin xyz="0.1 0.0 -0.025" rpy="-1.570 0.0 0.0" />
+	<origin xyz="0.1 0.0 0.0" rpy="-1.570 0.0 0.0" />
 	<axis xyz = "0.0 0.0 1.0" />
 	<limit effort = "100" velocity = "100" />
-	</joint>
+</joint>
 
-</xacro:macro>
-
-<xacro:center />
 
 </robot>
